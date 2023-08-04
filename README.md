@@ -1,5 +1,5 @@
 # OSWA-exam-resources
-Helpful notes, scripts and resources to use while studying for the offsec OSWA web-200 exam.
+Helpful commands, scripts and resources to use while studying for the Offsec OSWA Web-200 exam.
 
 ### /Recon
 Notes and scripts related to the discovery/recon phase.
