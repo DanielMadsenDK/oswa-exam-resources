@@ -4,21 +4,21 @@ Recon
 
 ### Set target variables
 
-```text-plain
+```bash
 export URL="http://target:80"
 ```
 
-```text-plain
+```bash
 export IP="10.10.0.1"
 ```
 
-```text-plain
+```bash
 export SESSION="token"
 ```
 
 ### Nmap
 
-```text-plain
+```bash
 nmap -p- -sC -sV $IP --open
 ```
 
@@ -26,43 +26,43 @@ nmap -p- -sC -sV $IP --open
 
 #### Directory discovery
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt --hc 404,301 "$URL/FUZZ/"
 ```
 
 #### Authenticated directory discovery
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt --hc 404 -b "PARAM=value" "$URL/FUZZ/"
 ```
 
 #### File discovery
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/raft-large-files.txt --hc 301,404 "$URL/FUZZ"
 ```
 
 #### Authenticated file fuzzing
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/raft-large-files.txt --hc 301,404,403 -b "PARAM=value" "$URL/FUZZ"
 ```
 
 #### Parameter discovery
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt --hc 404,301 "$URL/FUZZ=data"
 ```
 
 #### GET parameter values
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/seclists/Usernames/cirt-default-usernames.txt --hc 404,301 "$URL/index.php?parameter=FUZZ"
 ```
 
 #### html\_escape fuzzing
 
-```text-plain
+```bash
 wfuzz -c -z file,/usr/share/wordlists/Fuzzing/yeah.txt "$URL/FUZZ"
 ```
 
@@ -70,19 +70,19 @@ wfuzz -c -z file,/usr/share/wordlists/Fuzzing/yeah.txt "$URL/FUZZ"
 
 #### Endpoint discovery
 
-```text-plain
+```bash
 gobuster dir -u $URL -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt
 ```
 
 #### Subdomain discovery
 
-```text-plain
+```bash
 gobuster dns -d $URL -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
 ```
 
 ### CEWL
 
-```message-http
+```bash
 # To spider a site and write all found words to a file
 cewl -w wordlist.txt <url>
 # To spider a site and follow links to other sites
@@ -103,13 +103,13 @@ cewl -e -email_file <file> <url>
 
 Sub domain discovery with Host headers
 
-```text-plain
+```bash
 ffuf -w <Wordlist> -H "Host: FUZZ.acmeitsupport.thm" -u <IP>
 ```
 
 ### Feroxbuster
 
-```text-plain
+```bash
 feroxbuster --url http://IP -d 2 -x php
 ```
 
@@ -123,13 +123,13 @@ feroxbuster --url http://IP -d 2 -x php
 
 ### Hakrawler
 
-```text-plain
+```bash
 echo "$URL" > urls.txt
 cat urls.txt | hakrawler | sort | uniq -u
 ```
 
 ### Nikto
 
-```text-plain
+```bash
 nikto --host $IP -ssl -evasion 1
 ```
