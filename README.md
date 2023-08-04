@@ -2,7 +2,7 @@
 Helpful commands, scripts and resources to use while studying for the Offsec OSWA Web-200 exam.
 
 ### /Recon
-Notes and scripts related to the discovery/recon phase.
+Commands and scripts related to the discovery/recon phase.
 
 Tools:
 * NMap
@@ -19,7 +19,7 @@ Additionals:
 * Seclists
 
 ### /Vulnerabilities
-Notes and scripts related to different vulnerabilities. This includes exploitations for vulnerabilities.
+Commands and scripts related to different vulnerabilities. This includes exploitations for vulnerabilities.
 
 Tools:
 * BurpSuite
