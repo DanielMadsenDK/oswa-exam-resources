@@ -1,6 +1,4 @@
-# recon
-Recon
------
+# Recon
 
 ### Set target variables
 
